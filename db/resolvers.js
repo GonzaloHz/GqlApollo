@@ -5,7 +5,7 @@ const courses = [
     },
     {
         title: 'React – La Guía Completa: Hooks Context Redux MERN +15 Apps',
-        tech: 'ReactJS',
+        tech: 'React',
     },
     {
         title: 'Node.js – Bootcamp Desarrollo Web inc. MVC y REST API’s',
@@ -22,7 +22,12 @@ const courses = [
 const resolvers = {
     Query: {
         getCourses: () => courses,
-        getTech: ()=> courses
+        getTech: ()=> courses,
+        getCoursesInput: (_, {input}, ctx, info) => {
+            console.log(ctx)
+            const result = courses.filter(c => c.tech === input.tech)
+            return result;
+        }
     }
 }
 
